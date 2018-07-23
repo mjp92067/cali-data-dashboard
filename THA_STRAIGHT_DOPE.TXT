@@ -1,0 +1,7 @@
+Rob Hill speaks tha straight dope as follows...
+
+Let it be known
+
+This project is down and dirty git r done and will hopefully be evolved into a more generic report engine that is not specific to cali data but can be pointed to other data sources.
+
+Snazzy right?
