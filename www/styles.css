@@ -1,1 +1,7 @@
+body {font-family: arial;}
+input {
+    background: #007ddc;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    }
 select {height:25px;}
