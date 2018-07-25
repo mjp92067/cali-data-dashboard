@@ -194,7 +194,9 @@ function overall( $cnty_city_loc ) {
             , sum(`COUNT_MC_INJURED`) as `Motorcycle Injuries` 
             , sum(`COUNT_MC_KILLED`) as `Motorcycle Deaths` 
             , sum(case `TRUCK_ACCIDENT` when 'Y' then 1 else 0 end) as `Truck Crashes`
-        from
+            , sum(case `TRUCK_ACCIDENT` when 'Y' then `NUMBER_INJURED` else 0 end) as `Truck Injuries`
+            , sum(case `TRUCK_ACCIDENT` when 'Y' then `NUMBER_KILLED` else 0 end) as `Truck Deaths`
+                from
             collision
         where
             `CNTY_CITY_LOC` = '$cnty_city_loc'

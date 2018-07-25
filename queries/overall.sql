@@ -1,6 +1,3 @@
-/*
-Where do I get Truck Injuries and Truck Deaths?
-*/
 select
 	count(*) as `Crashes`
 	, sum(`NUMBER_INJURED`) as `Injuries`
@@ -16,8 +13,8 @@ select
 	, sum(`COUNT_MC_INJURED`) as `Motorcycle Injuries` 
 	, sum(`COUNT_MC_KILLED`) as `Motorcycle Deaths` 
 	, sum(case `TRUCK_ACCIDENT` when 'Y' then 1 else 0 end) as `Truck Crashes`
---	, Truck Injuries
---	, Truck Deaths
+	, sum(case `TRUCK_ACCIDENT` when 'Y' then `NUMBER_INJURED` else 0 end) as `Truck Injuries`
+	, sum(case `TRUCK_ACCIDENT` when 'Y' then `NUMBER_KILLED` else 0 end) as `Truck Deaths`
 from
 	collision
 where
