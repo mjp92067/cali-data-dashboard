@@ -5,10 +5,11 @@ input {
     border-radius: 5px;
     }
 select {height:45px; font-size:15px; color: #47525d;}
-h1 {font-family:'Merriweather', serif; font-size:36px; color: #007ddc; text-transform: lowercase;}
+h1 {font-family:'Merriweather', serif; font-size:36px; color: #333; text-transform: lowercase;}
 h2 {font-family:'Merriweather', serif; font-size:24px;}
 h3 {font-family:'Merriweather', serif; font-size:18px;}
 .submit {width:200px; height:45px; background-color: #ffc71c; margin-top:20px; font-size:15px;}
+.logo {width:110px;}
 table.dataTable {
     width: 100% !important;
     margin: 0 auto;
@@ -36,4 +37,7 @@ table.dataTable tbody td {
     margin-top: 50px;
     background: #f8f8f8;
     padding: 10px;
+}
+#mainbody {
+	margin-top:150px;
 }

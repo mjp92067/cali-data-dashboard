@@ -43,6 +43,8 @@ switch( $report ) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<img src="images/logo.png" class="logo">
+<div id="mainbody>">
 <h1><?php echo $city->city ?> in <?php echo $city->county ?></h1>
 <h2><?php echo $rpt ?></h2>
 <br>
@@ -71,6 +73,7 @@ switch( $report ) {
     <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 <div id="home">
     <a href="/cali-accidents/">Return to home page</a>
 </div>
