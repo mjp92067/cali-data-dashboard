@@ -71,6 +71,9 @@ switch( $report ) {
     <?php endforeach; ?>
     </tbody>
 </table>
+<div id="home">
+    <a href="/cali-accidents/">Return to home page</a>
+</div>
 <script>
         $(document).ready( function () {
             $('#myTable').DataTable();
