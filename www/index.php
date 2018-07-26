@@ -19,14 +19,14 @@ $cities = city_list();
         <form action="report.php" method="get">
         <h4>City:</h4>
                 
-                    <select name="cnty_city_loc">
+                    <select name="cnty_city_loc" class="homeselect">
                         <?php foreach ( $cities as $city ): ?>
                         <option value="<?php echo $city->cnty_city_loc; ?>"><?php echo $city->city; ?></option>
                         <?php endforeach; ?>
                     </select>
         <h4>Report:</h4>
                 
-                    <select name="report">
+                    <select name="report" class="homeselect">
                         <option value="overall">Overall Totals</option>
                         <option value="by_hour">Total crashes by hour</option>
                         <option value="type_of_collision">Type of collision</option>

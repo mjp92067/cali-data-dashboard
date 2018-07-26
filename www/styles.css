@@ -1,14 +1,11 @@
 body {font-family: 'Open Sans', arial; padding:25px; text-align: center;}
-input {
-    background: #d4d9dd;
-    padding: 10px 20px 10px 20px;
-    border-radius: 5px;
-    }
-select {height:45px; font-size:15px; color: #47525d;}
+input {background: #f5f5f5; padding: 10px 20px 10px 20px; border-radius: 5px;}
+select {height:35px; font-size:15px; color: #47525d;}
+select.homeselect {height:55px; font-size:15px; color: #47525d; width:300px;}
 h1 {font-family:'Merriweather', serif; font-size:36px; color: #333; text-transform: lowercase;}
 h2 {font-family:'Merriweather', serif; font-size:24px;}
 h3 {font-family:'Merriweather', serif; font-size:18px; font-weight: normal; background-color: #007ddc; text-align: center; padding:10px; color: #fff;}
-.submit {width:200px; height:45px; background-color: #ffc71c; margin-top:20px; font-size:15px;}
+.submit {width:200px; height:55px; background-color: #ffc71c; margin-top:20px; font-size:15px; width:300px; }
 h4 {font-family:'Merriweather', serif; font-size:16px; font-weight: normal;}
 .logo {width:110px;}
 table.dataTable {
