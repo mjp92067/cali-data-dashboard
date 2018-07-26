@@ -43,7 +43,7 @@ switch( $report ) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<img src="images/logo.png" class="logo">
+<a href="/cali-accidents"><img src="images/logo.png" class="logo"></a>
 <div id="mainbody>">
 <h1><?php echo $city->city ?> in <?php echo $city->county ?></h1>
 <h2><?php echo $rpt ?></h2>
