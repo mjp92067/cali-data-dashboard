@@ -7,8 +7,9 @@ input {
 select {height:45px; font-size:15px; color: #47525d;}
 h1 {font-family:'Merriweather', serif; font-size:36px; color: #333; text-transform: lowercase;}
 h2 {font-family:'Merriweather', serif; font-size:24px;}
-h3 {font-family:'Merriweather', serif; font-size:18px;}
+h3 {font-family:'Merriweather', serif; font-size:18px; font-weight: normal; background-color: #007ddc; text-align: center; padding:10px; color: #fff;}
 .submit {width:200px; height:45px; background-color: #ffc71c; margin-top:20px; font-size:15px;}
+h4 {font-family:'Merriweather', serif; font-size:16px; font-weight: normal;}
 .logo {width:110px;}
 table.dataTable {
     width: 100% !important;

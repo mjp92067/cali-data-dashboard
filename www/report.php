@@ -46,7 +46,7 @@ switch( $report ) {
 <a href="/cali-accidents"><img src="images/logo.png" class="logo"></a>
 <div id="mainbody>">
 <h1><?php echo $city->city ?> in <?php echo $city->county ?></h1>
-<h2><?php echo $rpt ?></h2>
+<h3><?php echo $rpt ?></h3>
 <br>
 <?php
     $fields = array_keys( get_object_vars( $rpt_data[0] ) );

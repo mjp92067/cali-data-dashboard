@@ -17,14 +17,14 @@ $cities = city_list();
     <div id="mainbody">
         <h1>California Crash Data: 2013-2017</h1>
         <form action="report.php" method="get">
-        <h3>City:</h3>
+        <h4>City:</h4>
                 
                     <select name="cnty_city_loc">
                         <?php foreach ( $cities as $city ): ?>
                         <option value="<?php echo $city->cnty_city_loc; ?>"><?php echo $city->city; ?></option>
                         <?php endforeach; ?>
                     </select>
-        <h3>Report:</h3>
+        <h4>Report:</h4>
                 
                     <select name="report">
                         <option value="overall">Overall Totals</option>
