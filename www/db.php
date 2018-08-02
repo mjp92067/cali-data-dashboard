@@ -44,6 +44,41 @@ function get_city( $cnty_city_loc ) {
     return $obj;    
 }
 
+function county_list() {
+    $mysqli = mysqli_get_obj();
+
+    $query = "select cnty_loc, county from county_city group by cnty_loc, county order by county";
+
+    $result = $mysqli->query( $query );
+
+    $obj_array = array();
+
+    while ( $obj = $result->fetch_object() ) {
+        $obj_array[] = $obj;
+    }
+
+    $mysqli->close();
+
+    return $obj_array;
+}
+
+function get_county( $cnty_loc ) {
+    $mysqli = mysqli_get_obj();
+
+    $query = "select cnty_loc, county from county_city where cnty_loc = '$cnty_loc' limit 1";
+
+    $result = $mysqli->query( $query );
+
+    $obj_array = array();
+
+    $obj = $result->fetch_object();
+
+    $mysqli->close();
+
+    return $obj;    
+}
+
+
 function alcohol_involved( $cnty_city_loc ) {
     $mysqli = mysqli_get_obj();
 
