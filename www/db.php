@@ -110,6 +110,37 @@ EOT;
     return $obj_array;
 }
 
+function alcohol_involved_county( $cnty_loc ) {
+    $mysqli = mysqli_get_obj();
+
+    $query = <<<EOT
+        select
+	        `ALCOHOL_INVOLVED` as `Alcohol Involved`
+            , count(*) as `Crashes`
+            , sum(`NUMBER_INJURED`) as `Injuries`
+            , sum(`COUNT_SEVERE_INJ`) as `Severe Injuries` 
+            , sum(`NUMBER_KILLED`) as `Deaths`
+        from
+            collision
+        where
+        cnty_loc = '$cnty_loc'
+        group by
+            `ALCOHOL_INVOLVED`
+EOT;
+
+    $result = $mysqli->query( $query );
+
+    $obj_array = array();
+
+    while ( $obj = $result->fetch_object() ) {
+        $obj_array[] = $obj;
+    }
+
+    $mysqli->close();
+
+    return $obj_array;
+}
+
 function by_hour( $cnty_city_loc ) {
     $mysqli = mysqli_get_obj();
 
