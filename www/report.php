@@ -41,11 +41,27 @@ switch( $report ) {
         $rpt_data = ( $cnty_city_loc == "0" ) ? alcohol_involved_monthly( $cnty_loc ) : alcohol_involved( $cnty_city_loc );
         break;
 }
+
+if ( isset( $_GET['csv'] ) ) {
+    $fp = fopen( 'php://output', 'w' ); 
+
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="' . $report . '.csv"');
+    header('Pragma: no-cache');    
+    header('Expires: 0');
+    
+    $headers = array_keys( get_object_vars( $rpt_data[0] ) );
+    fputcsv( $fp, $headers ); 
+    foreach ( $rpt_data as $rpt_datum ) {
+        fputcsv( $fp, array_values( get_object_vars( $rpt_datum ) ) );
+    }
+    die;
+}
 ?>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <title><?php echo $rpt ?> for <?php echo $city->city ?> in <?php echo $city->county ?></title>
+    <title><?php echo $rpt ?> for <?php echo $city->city ?> in <?php echo $county->county ?></title>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -82,6 +98,7 @@ switch( $report ) {
     <?php endforeach; ?>
     </tbody>
 </table>
+<a href="report.php?<?php echo $_SERVER["QUERY_STRING"] . '&csv'; ?>">download as CSV</a>
 </div>
 <div id="home">
     <a href="/cali-accidents/">Return to home page</a>
