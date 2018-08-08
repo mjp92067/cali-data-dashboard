@@ -10,6 +10,15 @@ function mysqli_get_obj() {
     return $mysqli;
 }
 
+/*
+Revisit these county/city methods as we are changing the selector from just city to county,
+then filtered city so some of these functions are going to be deprecated.
+
+I'm not going to pretend to care too much b/c I'm hoping to build a better mouse trap and delete
+this whole project at some point
+
+robh71 AKA "The wise one"
+*/
 function city_list() {
     $mysqli = mysqli_get_obj();
 
@@ -62,6 +71,9 @@ function county_list() {
     return $obj_array;
 }
 
+
+
+/* county and city methods above this are prob not used. TODO AUDIT -- robh71 */
 function get_county( $cnty_loc ) {
     $mysqli = mysqli_get_obj();
 
@@ -78,6 +90,42 @@ function get_county( $cnty_loc ) {
     return $obj;    
 }
 
+function get_county_list() {
+    $mysqli = mysqli_get_obj();
+
+    $query = 'select cnty_loc, county from county_city group by county order by county';
+
+    $result = $mysqli->query( $query );
+
+    $obj_array = array();
+
+    while ( $obj = $result->fetch_object() ) {
+        $obj_array[] = $obj;
+    }
+
+    $mysqli->close();
+
+    return $obj_array;    
+}
+
+function get_city_list() {
+    /* This method include the cnty_loc for filtering purposes on the client side */
+    $mysqli = mysqli_get_obj();
+
+    $query = 'select cnty_city_loc, city, cnty_loc from county_city order by city';
+
+    $result = $mysqli->query( $query );
+
+    $obj_array = array();
+
+    while ( $obj = $result->fetch_object() ) {
+        $obj_array[] = $obj;
+    }
+
+    $mysqli->close();
+
+    return $obj_array;    
+}
 
 function alcohol_involved( $cnty_city_loc ) {
     $mysqli = mysqli_get_obj();

@@ -1,35 +1,44 @@
 <?php
 require 'db.php';
 
+$cnty_loc = $_GET['cnty_loc'];
 $cnty_city_loc = $_GET['cnty_city_loc'];
-$city = get_city( $cnty_city_loc );
+
+$county = get_county( $cnty_loc );
+if ( $cnty_city_loc == "0" ) {
+    $city = new stdClass();
+    $city->city = "All";
+}
+else {
+    $city = get_city( $cnty_city_loc );
+}
 
 $report = $_GET['report'];
 
 switch( $report ) {
     case 'overall':
         $rpt = "Overall Totals";
-        $rpt_data = overall( $cnty_city_loc );
+        $rpt_data = ( $cnty_city_loc == "0" ) ? overall_county( $cnty_loc ) : overall( $cnty_city_loc );
         break;
     case 'by_hour':
         $rpt = "Total crashes by hour";
-        $rpt_data = by_hour( $cnty_city_loc );
+        $rpt_data = ( $cnty_city_loc == "0" ) ? by_hour_county( $cnty_loc ) : by_hour( $cnty_city_loc );
        break;
     case 'type_of_collision':
         $rpt = "Type of collision";
-        $rpt_data = type_of_collision( $cnty_city_loc );
+        $rpt_data = ( $cnty_city_loc == "0" ) ? type_of_collision_county( $cnty_loc ) : type_of_collision( $cnty_city_loc );
         break;
     case 'crashes_by_year_and_month':
         $rpt = "Total Crashes by Year by Month";
-        $rpt_data = crashes_by_year_and_month( $cnty_city_loc );
+        $rpt_data = ( $cnty_city_loc == "0" ) ? crashes_by_year_and_month_county( $cnty_loc ) : crashes_by_year_and_month( $cnty_city_loc );
         break;
     case 'crashes_by_year':
         $rpt = "Crashes by year";
-        $rpt_data = crashes_by_year( $cnty_city_loc );
+        $rpt_data = ( $cnty_city_loc == "0" ) ? crashes_by_year_monthly( $cnty_loc ) : crashes_by_year( $cnty_city_loc );
         break;
     case 'alcohol':
         $rpt = "Alcohol Involved";
-        $rpt_data = alcohol_involved( $cnty_city_loc );
+        $rpt_data = ( $cnty_city_loc == "0" ) ? alcohol_involved_monthly( $cnty_loc ) : alcohol_involved( $cnty_city_loc );
         break;
 }
 ?>
@@ -45,7 +54,7 @@ switch( $report ) {
 <body>
 <a href="/cali-accidents"><img src="images/logo.png" class="logo"></a>
 <div id="mainbody>">
-<h1><?php echo $city->city ?> in <?php echo $city->county ?></h1>
+<h1><?php echo $city->city ?> in <?php echo $county->county ?></h1>
 <h3><?php echo $rpt ?></h3>
 <br>
 <?php
